@@ -9,8 +9,8 @@ offline_sleep_time = 60*5  # Rest time in seconds if channel not live
 online_sleep_time = 60*20  # Increase time between live-checks if channel# is live
 sleep_time = offline_sleep_time  # Start in offline state
 
-twitch = Twitch('wjzimsnic43dkim6vqxyu2345wjfyp',
-                'ei8qdwqk48ofnngec517qi66wmnha9')
+twitch = Twitch('my_app_id',
+                'my_app_secret')
 while True:
     print('Checking if live')
     api_result = twitch.get_streams(user_login=target_stream)
