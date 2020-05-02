@@ -4,18 +4,18 @@ from twitchAPI.twitch import Twitch
 from time import sleep
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 
-target_stream = 'bobross'
-offline_sleep_time = 60*5  # Rest time in seconds if RL not live
-online_sleep_time = 60*20  # Increase time between live-checks if RL is live
+target_stream = 'rocketleague'
+offline_sleep_time = 60*5  # Rest time in seconds if channel not live
+online_sleep_time = 60*20  # Increase time between live-checks if channel# is live
 sleep_time = offline_sleep_time  # Start in offline state
+
 twitch = Twitch('wjzimsnic43dkim6vqxyu2345wjfyp',
                 'ei8qdwqk48ofnngec517qi66wmnha9')
-
 while True:
     print('Checking if live')
     api_result = twitch.get_streams(user_login=target_stream)
-    is_live = len(api_result['data']) > 0
-    if is_live:
+    channel_is_live = len(api_result['data']) > 0
+    if channel_is_live:
         print("Channel is live!")
         browser_open = len(wmi.WMI().Win32_Process(name='chrome.exe')) > 0
         if not browser_open:
@@ -33,6 +33,3 @@ while True:
         print("Not live")
         sleep_time = offline_sleep_time
     sleep(sleep_time)
-
-for title in pygetwindow.getAllTitles():
-    print(title)
